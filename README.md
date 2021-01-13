@@ -16,11 +16,11 @@
 
 
 ### Assosiation
-- belongs_to:purchase_functions
-- has_many:selling_functions
+- has_one:purchasers_infomations
+- has_many:items
 
 
-## purchase_functionsテーブル
+## purchasers_infomationsテーブル
 
 | Column        | Type      | Options     |
 | --------      | ------    | ----------- |
@@ -38,12 +38,12 @@
 
 ### Assosiation
 - belongs_to : users
-- belongs_to: selling_functions
+- belongs_to: items
 
 
 
 
-## selling_functions テーブル
+## items テーブル
 | Column       | Type       | Options     |　　
 | --------     | ------     | ----------- |
 | image        |　references|　null: false |　　　　　　    [商品の画像]
@@ -59,6 +59,6 @@
 
 ### Assosiation
 - belongs_to :users
-- belongs_to:purchase_functions
+- has_one :purchasers_infomations
 
 
