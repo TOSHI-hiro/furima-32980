@@ -43,10 +43,11 @@
 
 
 
-## items テーブル
+## itemsテーブル
+
 | Column       | Type       | Options     |　　
 | --------     | ------     | ----------- |
-| image        |　references|　null: false |　　　　　　    [商品の画像]
+| image        | references | null: false |　　　　　　    [商品の画像]
 | subscription | text       | null: false |　             [商品の説明]
 | category     | references | null: false |　　[商品の詳細/商品のカテゴリー]
 | status       | references | null: false |　　　　　       [商品の状態]
