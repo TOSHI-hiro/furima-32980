@@ -45,7 +45,7 @@
 
 ## itemsテーブル
 
-| Column       | Type       | Options     |　　
+| Column       | Type       | Options     |
 | --------     | ------     | ----------- |
 | image        | references | null: false |　　　　　　    [商品の画像]
 | subscription | text       | null: false |　             [商品の説明]
