@@ -10,26 +10,25 @@
 | last_name         | string | null: false |
 | first_name_kana   | string | null: false |
 | last_name_kana    | string | null: false |
-| date　of birth    | date   | null: false |  　　　　　　　 [生年月日]
+| date_of_birth    | date   | null: false |  　　　　　　　 [生年月日]
 
 
 
 ### Assosiation
-- has_one:purchasers
-- has_one:items
+- has_many:purchasers
+- has_many:items
 
 
 ## purchasersテーブル
 | Column            | Type      | Options     |
 | --------          | ------    | ----------- |
-|items_id           |references | null:false ,foreign_key:true| 
-|shipping_address_id|references | null:false ,foreign_key:true| 
-|user_id            |references | null:false ,foreign_key:true| 
+|items_id           |integer | null:false ,foreign_key:true| 
+|user_id            |integer | null:false ,foreign_key:true| 
 
 
 ### Assosiation
-- belongs_to : users
-- belongs_to: items
+- belongs_to : user
+- belongs_to: item
 - has_one:shipping_addresss
 
 
@@ -42,10 +41,12 @@
 |address        | text      | null: false |　　　　　　　[番地]
 | building      | text      | null: false |　　　　　  [建物]
 | phone_numbers | integer   | null: false |　　　     [電話番号]
+|purchaser_id   |integer    | null:false ,foreign_key:true| 
+
 
 
 ### Assosiation
-- belongs_to : purchasers
+- belongs_to : purchaser
 
 
 
@@ -58,13 +59,12 @@
 | category_id     | integer    | null: false |　　[商品の詳細/商品のカテゴリー]
 | status_id       | integer    | null: false |　　　　　       [商品の状態]
 | shipping_id     | integer    | null: false |  　[発送について/配送料の負担]
-| shipping_area_id| integer    | null: false |  　　　　　　 　[発送元の地域]
 | deadline_id     | integer    | null: false |　　　　　　　　　[発送までの日数]
 | price           | integer    | null: false |　　　　　　　　　[販売価格]
-| user_id         | references | null: false ,foreign_key :true|
+| user_id         | integer    | null: false ,foreign_key :true|
 
 
 ### Assosiation
-- belongs_to :users
-- has_one :purchasers
+- belongs_to :user
+- has_one :purchaser
 
