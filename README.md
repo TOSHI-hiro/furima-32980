@@ -39,8 +39,8 @@
 | city          | text      | null: false |　　　　　　　[市区町村]
 |address        | text      | null: false |　　　　　　　[番地]
 | building      | text      |-------------|                [建物]
-| phone_numbers | integer   | null: false |　　　     [電話番号]
-|purchaser_id   |integer    | null:false ,foreign_key:true| 
+| phone_numbers | string    | null: false |　　　     [電話番号]
+|purchaser_id   | integer   | null:false ,foreign_key:true| 
 
 
 
