@@ -1,7 +1,7 @@
 # README
 ## users テーブル
 | Column            | Type   | Options     |
-| ----------------  | ------ | ----------- |
+| ------------------|--------|-------------|
 | name              | string | null: false |
 | email             | string | null: false ,unique:true|
 | encrypted_password| string | null: false |
@@ -20,9 +20,9 @@
 
 ## purchasersテーブル
 | Column            | Type      | Options     |
-| --------          | ------    | ----------- |
-|items_id           |integer | null:false ,foreign_key:true| 
-|user_id            |integer | null:false ,foreign_key:true| 
+|-------------------|-----------|-------------|
+|item_id            |integer    | null:false ,foreign_key:true| 
+|user_id            |integer    | null:false ,foreign_key:true| 
 
 
 ### Assosiation
@@ -33,12 +33,12 @@
 
 ## shipping_addresssテーブル
 | Column        | Type      | Options     |
-| --------      | ------    | ----------- |
-|post_numbers   | integer   | null: false |　　　[郵便番号]
+| --------------|-----------|-------------|
+|post_numbers   | string    | null: false |　　　[郵便番号]
 | prefecture_id | integer   | null: false |　　　　　　　[都道府県/発送元]
 | city          | text      | null: false |　　　　　　　[市区町村]
 |address        | text      | null: false |　　　　　　　[番地]
-| building      | text      | null: false |　　　　　  [建物]
+| building      | text      | 　　　　　                 [建物]
 | phone_numbers | integer   | null: false |　　　     [電話番号]
 |purchaser_id   |integer    | null:false ,foreign_key:true| 
 
@@ -52,11 +52,13 @@
 
 ## itemsテーブル
 | Column          | Type       | Options     |
-| --------        | ------     | ----------- |
+|-----------------|------------|-------------|
+| product_name    | string     |null: false  |
 | subscription    | text       | null: false |　             [商品の説明]
 | category_id     | integer    | null: false |　　[商品の詳細/商品のカテゴリー]
 | status_id       | integer    | null: false |　　　　　       [商品の状態]
 | shipping_id     | integer    | null: false |  　[発送について/配送料の負担]
+| prefecture_id   | integer    | null: false |               [発送元]
 | deadline_id     | integer    | null: false |　　　　　　　　　[発送までの日数]
 | price           | integer    | null: false |　　　　　　　　　[販売価格]
 | user_id         | integer    | null: false ,foreign_key :true|
