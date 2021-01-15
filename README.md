@@ -1,6 +1,5 @@
 # README
 ## users テーブル
-
 | Column            | Type   | Options     |
 | ----------------  | ------ | ----------- |
 | name              | string | null: false |
@@ -36,7 +35,7 @@
 | Column        | Type      | Options     |
 | --------      | ------    | ----------- |
 |post_numbers   | integer   | null: false |　　　[郵便番号]
-| prefecture_id | integer   | null: false |　　　　　　　[都道府県]
+| prefecture_id | integer   | null: false |　　　　　　　[都道府県/発送元]
 | city          | text      | null: false |　　　　　　　[市区町村]
 |address        | text      | null: false |　　　　　　　[番地]
 | building      | text      | null: false |　　　　　  [建物]
@@ -52,7 +51,6 @@
 
 
 ## itemsテーブル
-
 | Column          | Type       | Options     |
 | --------        | ------     | ----------- |
 | subscription    | text       | null: false |　             [商品の説明]
