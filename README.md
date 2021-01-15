@@ -1,35 +1,43 @@
 # README
 ## users テーブル
 
-| Column           | Type   | Options     |
-| ---------------- | ------ | ----------- |
-| name             | string | null: false |
-| email            | string | null: false |
-| password         | string | null: false |
-| first_name       | text   | null: false |
-| last_name        | text   | null: false |
-| first_name_kana  | text   | null: false |
-| last_name_kana   | text   | null: false |
-| year             | integer| null: false |  　　　　　　　 [生年月日]
-| month            | integer| null: false |
-| day              | integer| null: false |
+| Column            | Type   | Options     |
+| ----------------  | ------ | ----------- |
+| name              | string | null: false |
+| email             | string | null: false ,unique:true|
+| encrypted_password| string | null: false |
+| first_name        | string | null: false |
+| last_name         | string | null: false |
+| first_name_kana   | string | null: false |
+| last_name_kana    | string | null: false |
+| date　of birth    | date   | null: false |  　　　　　　　 [生年月日]
+
 
 
 ### Assosiation
-- has_one:purchasers_infomations
-- has_many:items
+- has_one:purchasers
+- has_one:items
 
 
-## purchasers_infomationsテーブル
+## purchasersテーブル
+| Column            | Type      | Options     |
+| --------          | ------    | ----------- |
+|items_id           |references | null:false ,foreign_key:true| 
+|shipping_address_id|references | null:false ,foreign_key:true| 
+|user_id            |references | null:false ,foreign_key:true| 
 
+
+### Assosiation
+- belongs_to : users
+- belongs_to: items
+- has_one:shipping_addresss
+
+
+## shipping_addresssテーブル
 | Column        | Type      | Options     |
 | --------      | ------    | ----------- |
-| card_numbers  | integer   | null: false |　　　[カード番号]
-| card_month    | integer   | null: false |　　　　[有効期限]
-| card_year     | integer   | null: false |
-| security_code | integer   | null: false |  　[セキュリティコード]
-|post_numbers   | integer   | null: false |　　　[発送先の情報/郵便番号]
-| prefecture    | text      | null: false |　　　　　　　[都道府県]
+|post_numbers   | integer   | null: false |　　　[郵便番号]
+| prefecture_id | integer   | null: false |　　　　　　　[都道府県]
 | city          | text      | null: false |　　　　　　　[市区町村]
 |address        | text      | null: false |　　　　　　　[番地]
 | building      | text      | null: false |　　　　　  [建物]
@@ -37,28 +45,26 @@
 
 
 ### Assosiation
-- belongs_to : users
-- belongs_to: items
+- belongs_to : purchasers
 
 
 
 
 ## itemsテーブル
 
-| Column       | Type       | Options     |
-| --------     | ------     | ----------- |
-| image        | references | null: false |　　　　　　    [商品の画像]
-| subscription | text       | null: false |　             [商品の説明]
-| category     | references | null: false |　　[商品の詳細/商品のカテゴリー]
-| status       | references | null: false |　　　　　       [商品の状態]
-| shipping     | references | null: false |  　[発送について/配送料の負担]
-| shipping_area| references | null: false |  　　　　　　 　[発送元の地域]
-| deadline     | references | null: false |　　　　　　　　　[発送までの日数]
-| price        | integer    | null: false |　　　　　　　　　[販売価格]
-| users        | references | null: false |
+| Column          | Type       | Options     |
+| --------        | ------     | ----------- |
+| subscription    | text       | null: false |　             [商品の説明]
+| category_id     | integer    | null: false |　　[商品の詳細/商品のカテゴリー]
+| status_id       | integer    | null: false |　　　　　       [商品の状態]
+| shipping_id     | integer    | null: false |  　[発送について/配送料の負担]
+| shipping_area_id| integer    | null: false |  　　　　　　 　[発送元の地域]
+| deadline_id     | integer    | null: false |　　　　　　　　　[発送までの日数]
+| price           | integer    | null: false |　　　　　　　　　[販売価格]
+| user_id         | references | null: false ,foreign_key :true|
 
 
 ### Assosiation
 - belongs_to :users
-- has_one :purchasers_infomations
+- has_one :purchasers
 
