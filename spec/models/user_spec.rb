@@ -7,12 +7,11 @@ describe User do
   describe 'ユーザー新規登録' do
     context '新規登録がうまくいくとき' do
       it "nickname,email,password,password_confirmation,本名の名字,名前,本名の名字(カナ),名前(カナ),生年月日が存在すれば登録できる" do
-        @user.name = "aaaaaa"
+       
         expect(@user).to be_valid
       end
 
       it "passwordが6文字以上であれば登録できる" do
-        @user.name = "aaaaaa"
         @user.password = "aaa000"
         @user.password_confirmation = "aaa000"
         expect(@user).to be_valid
@@ -27,14 +26,12 @@ describe User do
       
       end
        it "emailが空では登録できない" do
-       @user.name = "aaaaaa"
        @user.email = ""
        @user.valid?
        expect(@user.errors.full_messages).to include("Email can't be blank")
       end
       
       it "重複したemailが存在する場合登録できない" do
-        @user.name = "aaaaaa"
         @user.save
         another_user = FactoryBot.build(:user)
         another_user.email = @user.email
@@ -47,7 +44,6 @@ describe User do
         expect(@user.errors.full_messages).to include("Password can't be blank")
       end
       it "passwordが5文字以下であれば登録できない" do
-        @user.name = "aaaaaa"
         @user.password = "00000"
         @user.password_confirmation = "00000"
         @user.valid?
@@ -60,7 +56,6 @@ describe User do
       end
 
       it 'ユーザ本名:全角（漢字 ひらがな カタカナ）（半角のみ）' do
-        @user.name = "aaaaaa"
         @user.first_name = "a"
         @user.last_name = "a"
         @user.valid?
@@ -69,7 +64,6 @@ describe User do
       end
 
       it 'password:半角英数混合(半角英語のみ)' do
-        @user.name = "aaaaaa"
         @user.password = "aaaaaaa"
         @user.password_confirmation = "aaaaaaa"
         @user.valid?
@@ -77,7 +71,6 @@ describe User do
       end
 
       it 'password:半角英数混合(半角数字のみ)' do
-        @user.name = "aaaaaa"
         @user.password = "1111111"
         @user.password_confirmation = "1111111"
         @user.valid?
