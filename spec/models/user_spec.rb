@@ -62,12 +62,18 @@ describe User do
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
 
-      it 'ユーザ本名:全角（漢字 ひらがな カタカナ）（半角のみ）' do
+      it 'ユーザ本名:全角（漢字 ひらがな カタカナ）' do
         @user.first_name = "a"
         @user.last_name = "a"
         @user.valid?
-        @user.errors.full_messages
         expect(@user.errors.full_messages).to include("First name 全角文字を使用してください", "Last name 全角文字を使用してください") 
+      end
+
+      it 'ユーザ本名のフリガナ:全角(カタカナ)' do
+        @user.first_name_kana = "a"
+        @user.last_name_kana = "a"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name kana 全角カタカナを使用してください", "Last name kana 全角カタカナを使用してください") 
       end
 
       it 'password:半角英数混合(半角英語のみ)' do
