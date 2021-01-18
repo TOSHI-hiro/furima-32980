@@ -62,11 +62,16 @@ describe User do
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
 
-      it 'ユーザ本名:全角（漢字 ひらがな カタカナ）' do
+      it "first_nameが半角英字では登録できない" do
         @user.first_name = "a"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name 全角文字を使用してください")
+      end
+      
+        it "last_nameが半角英字では登録できない" do
         @user.last_name = "a"
         @user.valid?
-        expect(@user.errors.full_messages).to include("First name 全角文字を使用してください", "Last name 全角文字を使用してください") 
+        expect(@user.errors.full_messages).to include("Last name 全角文字を使用してください") 
       end
 
       it 'ユーザ本名のフリガナ:全角(カタカナ)' do
