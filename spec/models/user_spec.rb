@@ -74,11 +74,17 @@ describe User do
         expect(@user.errors.full_messages).to include("Last name 全角文字を使用してください") 
       end
 
-      it 'ユーザ本名のフリガナ:全角(カタカナ)' do
+      it "first_name_kanaが半角英字では登録できない" do
         @user.first_name_kana = "a"
+        @user.valid?
+        @user.errors.full_messages
+        expect(@user.errors.full_messages).to include("First name kana 全角カナを使用してください") 
+      end
+
+      it "last_name_kanaが半角英字では登録できない" do
         @user.last_name_kana = "a"
         @user.valid?
-        expect(@user.errors.full_messages).to include("First name kana 全角カタカナを使用してください", "Last name kana 全角カタカナを使用してください") 
+        expect(@user.errors.full_messages).to include("Last name kana 全角カナを使用してください") 
       end
 
       it 'password:半角英数混合(半角英語のみ)' do
