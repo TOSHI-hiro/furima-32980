@@ -37,7 +37,7 @@
 |post_numbers   | string    | null: false |　　　[郵便番号]
 | prefecture_id | integer   | null: false |　　　　　　　[都道府県/発送元]
 | city          | string    | null: false |　　　　　　　[市区町村]
-|address        | string    | null: false |　　　　　　　[番地]
+| address       | string    | null: false |　　　　　　　[番地]
 | building      | string    |-------------|                [建物]
 | phone_numbers | string    | null: false |　　　     [電話番号]
 |purchaser_id   | integer   | null:false ,foreign_key:true| 
@@ -53,7 +53,7 @@
 ## itemsテーブル
 | Column          | Type       | Options     |
 |-----------------|------------|-------------|
-| product_name    | string     |null: false  |
+| product_name    | string     | null: false |
 | subscription    | text       | null: false |　             [商品の説明]
 | category_id     | integer    | null: false |　　[商品の詳細/商品のカテゴリー]
 | status_id       | integer    | null: false |　　　　　       [商品の状態]

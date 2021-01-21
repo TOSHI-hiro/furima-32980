@@ -1,16 +1,17 @@
 class Item < ApplicationRecord
 
-  with_options presence: true do
-    validates :product_name, length: { maximum: 6 }
-    validates :subscription
-    validates :category_id
-    validates :status_id
-    validates :shipping_id
-    validates :prefecture_id
-    validates :deadline_id
-    validates :price,
-  end
-  belongs_to :user
-  has_one :purchaser 
+    extend ActiveHash::Associations::ActiveRecordExtensions
+    
+    belongs_to :status
+    belongs_to :prefecture
+    belongs_to :category
+    belongs_to :shipping
+    belongs_to :deadline
+    
+    validates :category_id,numericality: { other_than: 1 }
+    validates :status_id,numericality: { other_than: 1 } 
+    validates :shipping_id,numericality: { other_than: 1 }
+    validates :prefecture_id,numericality: { other_than: 1 } 
+    validates :deadline_id,numericality: { other_than: 1 }
   
 end
