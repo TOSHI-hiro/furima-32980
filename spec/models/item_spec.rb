@@ -106,6 +106,24 @@ RSpec.describe Item do
         expect(@item.errors.full_messages).to include("Price must be less than 10000000")
       end
 
+      it "priceが全角文字では登録できない" do
+        @item.price= "ああああああ"
+        @item.valid?
+        @item.errors.full_messages
+        expect(@item.errors.full_messages).to include("Price is not a number") 
+      end
+
+      it "priceが半角英数混合" do
+        @item.price = "111aaa"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not a number")
+      end
+
+      it "priceが半角英語だと登録できない" do
+        @item.price = "aaaaaa"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not a number")
+      end
 
     end
  end

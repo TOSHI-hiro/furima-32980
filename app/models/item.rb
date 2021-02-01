@@ -22,8 +22,9 @@ class Item < ApplicationRecord
     validates :prefecture_id
     validates :deadline_id
     end
-    validates :price, numericality:{ greater_than_or_equal_to:300 }
-    validates :price, numericality:{ less_than:10000000 }
+
+    validates :price, numericality:{ greater_than_or_equal_to:300, less_than:10000000 } ,format: { with: /\A[0-9]+\z/, message: '半角数字を使用してください' }
+
  
     # validates :price, format: { with: /\A[A-Za-z]\w*\z/ }
     
