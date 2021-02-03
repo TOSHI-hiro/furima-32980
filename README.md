@@ -67,8 +67,3 @@
 - belongs_to :user
 - has_one :purchaser
 
-<<<<<<< Updated upstream
-=======
-
-    
->>>>>>> Stashed changes
