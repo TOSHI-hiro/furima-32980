@@ -1,10 +1,9 @@
 require 'rails_helper'
-
 describe User do
   before do
     @user = FactoryBot.build(:user)
   end
-  
+
   describe 'ユーザー新規登録' do
     context '新規登録がうまくいくとき' do
       it "nickname,email,password,password_confirmation,本名の名字,名前,本名の名字(カナ),名前(カナ),生年月日が存在すれば登録できる" do
