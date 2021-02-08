@@ -27,6 +27,9 @@ class Item < ApplicationRecord
 
  
     # validates :price, format: { with: /\A[A-Za-z]\w*\z/ }
+
+     belongs_to :user
+     has_one :purchaser
     
   
 end
