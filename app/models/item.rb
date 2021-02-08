@@ -25,8 +25,7 @@ class Item < ApplicationRecord
 
     validates :price, numericality:{ greater_than_or_equal_to:300, less_than:10000000 } ,format: { with: /\A[0-9]+\z/, message: '半角数字を使用してください' }
 
- 
-    # validates :price, format: { with: /\A[A-Za-z]\w*\z/ }
+
 
      belongs_to :user
      has_one :purchaser
