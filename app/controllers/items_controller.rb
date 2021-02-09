@@ -1,14 +1,7 @@
 class ItemsController < ApplicationController
-<<<<<<< Updated upstream
   before_action :set_item, only: [:edit, :update, :show,:destroy]
   before_action :authenticate_user!, except: [:index,:show]  
   before_action :correct_user, only: [:edit,:update]  
-
-=======
-  before_action :set_item, only: [:edit, :update, :show]
-  before_action :authenticate_user!, except: [:index,:show]  
-  before_action :correct_user, only: [:edit,:update]  
->>>>>>> Stashed changes
   def index
     @items = Item.all.order("created_at DESC")
   end
