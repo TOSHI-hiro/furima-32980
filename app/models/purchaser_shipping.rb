@@ -12,7 +12,6 @@ class PurchaserShipping
     validates  :token
   end
   def save
-    # binding.pry
    purchaser = Purchaser.create(item_id: item_id,user_id: user_id)
    ShippingAddress.create(post_numbers: post_numbers, city: city ,address: address, building: building, phone_numbers: phone_numbers,purchaser_id: purchaser.id,prefecture_id: prefecture_id)
   end 

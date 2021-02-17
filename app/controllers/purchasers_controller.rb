@@ -1,8 +1,11 @@
 class PurchasersController < ApplicationController
   before_action :authenticate_user!, only: [:index,:create]
   def index
-    @purchaser_shipping = PurchaserShipping.new
     @item = Item.find(params[:item_id])
+    if @item.purchaser !=  nil
+      redirect_to root_path
+    end
+    @purchaser_shipping = PurchaserShipping.new
   end
 
   def create
@@ -11,7 +14,7 @@ class PurchasersController < ApplicationController
     if  @purchaser_shipping.valid?
         pay_item
         @purchaser_shipping.save
-       redirect_to action: :index
+       redirect_to root_path
     else
       render  controller: :purchasers, action: :index
     end
@@ -31,4 +34,4 @@ class PurchasersController < ApplicationController
         currency:'jpy'                 # 通貨の種類(日本円)
       )
     end
-  end
+ end
