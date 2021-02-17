@@ -11,8 +11,6 @@
 | last_name_kana    | string | null: false |
 | date_of_birth     | date   | null: false |  　　　　　　　 [生年月日]
 
-
-
 ### Assosiation
 - has_many:purchasers
 - has_many:items
@@ -29,7 +27,6 @@
 - belongs_to : item
 - has_one:shipping_addresss
 
-
 ## shipping_addresssテーブル
 | Column        | Type      | Options     |
 | --------------|-----------|-------------|
@@ -41,13 +38,8 @@
 | phone_numbers | string    | null: false |　　　     [電話番号]
 |purchaser_id   | integer   | null:false ,foreign_key:true| 
 
-
-
 ### Assosiation
 - belongs_to : purchaser
-
-
-
 
 ## itemsテーブル
 | Column          | Type       | Options     |
@@ -61,7 +53,6 @@
 | deadline_id     | integer    | null: false |　　　　　　　　　[発送までの日数]
 | price           | integer    | null: false |　　　　　　　　　[販売価格]
 | user_id         | integer    | null: false ,foreign_key :true|
-
 
 ### Assosiation
 - belongs_to :user
