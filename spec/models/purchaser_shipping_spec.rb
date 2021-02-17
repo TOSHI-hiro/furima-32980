@@ -16,7 +16,7 @@ RSpec.describe PurchaserShipping, type: :model do
       expect(@purchaser_shipping).to be_valid
     end
 
-    describe '商品が購入ができなかった時' do
+   describe '商品が購入ができなかった時' do
 
     it 'post_numberが空だと保存できないこと' do
       @purchaser_shipping.post_numbers = ""
@@ -55,5 +55,17 @@ RSpec.describe PurchaserShipping, type: :model do
       @purchaser_shipping.valid?
       expect(@purchaser_shipping.errors.full_messages).to include("Token can't be blank")
     end
+
+    it "user_idが空では登録できないこと" do
+      @purchaser_shipping.user_id = nil
+      @purchaser_shipping.valid?
+      expect(@purchaser_shipping.errors.full_messages).to include("User can't be blank")
   end
+
+  it "item_idが空では登録できないこと" do
+    @purchaser_shipping.item_id = nil
+    @purchaser_shipping.valid?
+    expect(@purchaser_shipping.errors.full_messages).to include("Item can't be blank")
+  end
+ end 
 end

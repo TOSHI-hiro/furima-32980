@@ -9,6 +9,7 @@ FactoryBot.define do
     user_id              {1}
     prefecture_id        {2}
     token {"tok_abcdefghijk00000000000000000"}
+    
 
   end
 end

@@ -5,11 +5,13 @@ class PurchaserShipping
 
   with_options presence:true do
     validates  :post_numbers     ,format: { with: /\A\d{3}[-]\d{4}\z/, message: 'ハイフンを入れてください' }
-    validates  :prefecture_id
+    validates  :prefecture_id, numericality: { other_than: 1 }
     validates  :city
     validates  :address
     validates  :phone_numbers   ,format: { with: /\A\d{11}\z/ ,message: '電話番号はハイフンなしの数字11桁です' }
     validates  :token
+    validates  :user_id 
+    validates  :item_id
   end
   def save
    purchaser = Purchaser.create(item_id: item_id,user_id: user_id)

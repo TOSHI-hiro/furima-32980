@@ -41,9 +41,8 @@ class ItemsController < ApplicationController
 
   private
 
- 
   def correct_user
-    if current_user.id !=  @item.user_id
+    if current_user.id !=  @item.user_id || @item.purchaser !=  nil
        redirect_to root_path
     end 
   end

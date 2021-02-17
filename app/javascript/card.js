@@ -3,7 +3,6 @@ const pay = () => {
   const form = document.getElementById("charge-form");
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    console.log("フォーム送信時にイベント発火")
 
     const formResult = document.getElementById("charge-form");
     const formData = new FormData(formResult);
@@ -15,8 +14,6 @@ const pay = () => {
       exp_month: formData.get("purchaser_shipping[cem]"),
       exp_year: `20${formData.get("purchaser_shipping[cey]")}`,
     };
-    console.log(card)
-
         Payjp.createToken(card, (status, response) => {
       if (status == 200) {
         const token = response.id;
@@ -32,7 +29,6 @@ const pay = () => {
       document.getElementById("card-exp-year").removeAttribute("name");
 
       document.getElementById("charge-form").submit();
-      console.log("成功")
     });
   });
 };
