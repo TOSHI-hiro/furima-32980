@@ -32,6 +32,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    set_item
   end
 
   def destroy
@@ -51,7 +52,6 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-
     params.require(:item).permit(:image,:product_name,:subscription,:price,:category_id,:status_id,:prefecture_id,:shipping_id,:deadline_id,:status_id).merge(user_id: current_user.id)
   end
 
