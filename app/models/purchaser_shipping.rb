@@ -6,7 +6,7 @@ class PurchaserShipping
     validates  :prefecture_id, numericality: { other_than: 1 }
     validates  :city
     validates  :address
-    validates  :phone_numbers   ,format: { with: /\A/^(0{1}\d{9,10})$/z/ ,message: '電話番号はハイフンなしの数字11桁か10桁です' }
+    validates  :phone_numbers   ,format: { with: /\A\d{10,11}\z/ ,message: '電話番号はハイフンなしの数字11桁か10桁です' }
     validates  :token
     validates  :user_id 
     validates  :item_id

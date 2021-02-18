@@ -7,7 +7,7 @@ RSpec.describe PurchaserShipping, type: :model do
       @user = FactoryBot.create(:user)
       @item = FactoryBot.create(:item)
       @purchaser_shipping = FactoryBot.build(:purchaser_shipping, user_id: @user.id, item_id: @item.id)
-      sleep(1)
+      sleep 1 
     end
     describe '商品が購入ができた時' do
       it 'すべての値が正しく入力されていれば保存できること' do
@@ -48,12 +48,12 @@ RSpec.describe PurchaserShipping, type: :model do
     it 'phonenumberが空だと保存できないこと' do
       @purchaser_shipping.phone_numbers = ""
       @purchaser_shipping.valid?
-      expect(@purchaser_shipping.errors.full_messages).to include("Phone numbers can't be blank", "Phone numbers 電話番号はハイフンなしの数字11桁です")
+      expect(@purchaser_shipping.errors.full_messages).to include("Phone numbers can't be blank", "Phone numbers 電話番号はハイフンなしの数字11桁か10桁です")
     end
     it 'phone_numbersが全角文字だと保存できないこと' do
       @purchaser_shipping.phone_numbers = "あああああああああああ"
       @purchaser_shipping.valid?
-      expect(@purchaser_shipping.errors.full_messages).to include("Phone numbers 電話番号はハイフンなしの数字11桁です")
+      expect(@purchaser_shipping.errors.full_messages).to include("Phone numbers 電話番号はハイフンなしの数字11桁か10桁です")
     end
 
     it "tokenが空では登録できないこと" do
@@ -83,13 +83,13 @@ RSpec.describe PurchaserShipping, type: :model do
   it "電話番号が12桁以上では登録できない" do
     @purchaser_shipping.phone_numbers = "000000000000"
     @purchaser_shipping.valid?
-    expect(@purchaser_shipping.errors.full_messages).to include("Phone numbers 電話番号はハイフンなしの数字11桁です")
+    expect(@purchaser_shipping.errors.full_messages).to include("Phone numbers 電話番号はハイフンなしの数字11桁か10桁です")
   end
 
   it "電話番号が英数字混合では登録できない。" do
     @purchaser_shipping.phone_numbers = "0000000000q"
     @purchaser_shipping.valid?
-    expect(@purchaser_shipping.errors.full_messages).to include("Phone numbers 電話番号はハイフンなしの数字11桁です")
+    expect(@purchaser_shipping.errors.full_messages).to include("Phone numbers 電話番号はハイフンなしの数字11桁か10桁です")
   end
 
   it "都道府県に1が選択されている場合は登録できない。" do
