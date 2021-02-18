@@ -1,6 +1,4 @@
 class Item < ApplicationRecord
-    attr_accessor :token
-
     extend ActiveHash::Associations::ActiveRecordExtensions
     
     belongs_to :status

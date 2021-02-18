@@ -7,6 +7,7 @@ FactoryBot.define do
     purchaser_id         {1}
     prefecture_id        {2}
     token {"tok_abcdefghijk00000000000000000"}
+    building            {"ビル"}
     
 
   end

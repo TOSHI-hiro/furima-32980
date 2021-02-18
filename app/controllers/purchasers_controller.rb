@@ -1,6 +1,6 @@
 class PurchasersController < ApplicationController
   before_action :authenticate_user!, only: [:index,:create]
-  before_action :authenticate_user!, only: [:index,:create]
+  before_action :find_item, only: [:index,:create]
   def index
     if @item.purchaser !=  nil  || @item.user_id == current_user.id
       redirect_to root_path
@@ -9,6 +9,9 @@ class PurchasersController < ApplicationController
   end
 
   def create
+    if @item.purchaser !=  nil  || @item.user_id == current_user.id
+      redirect_to root_path
+    end
       @purchaser_shipping = PurchaserShipping.new(purchaser_params)
     if @purchaser_shipping.valid?
       pay_item
