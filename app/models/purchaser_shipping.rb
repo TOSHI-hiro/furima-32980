@@ -1,7 +1,7 @@
 class PurchaserShipping
   include ActiveModel::Model
 
-  attr_accessor :post_numbers, :city ,:address, :building, :phone_numbers, :item_id, :purchaser_id, :user_id , :prefecture_id,:token
+  attr_accessor :post_numbers, :city ,:address, :building, :phone_numbers, :item_id,  :user_id , :prefecture_id,:token
 
   with_options presence:true do
     validates  :post_numbers     ,format: { with: /\A\d{3}[-]\d{4}\z/, message: 'ハイフンを入れてください' }
