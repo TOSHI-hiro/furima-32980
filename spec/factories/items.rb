@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :item do
+
     product_name           {Faker::Games::Zelda.item}
     subscription      {Faker::Games::Zelda.game}
     category_id     {2}
@@ -9,8 +10,10 @@ FactoryBot.define do
     deadline_id     {2}
     price           {Faker::Number.number(digits: 4)}
 
-    after(:build) do |item|
-      item.image.attach(io: File.open('public/images/comment.png'), filename: 'comment.png')
+    association :user
+
+     after(:build) do |item|
+       item.image.attach(io: File.open('public/images/comment.png'), filename: 'comment.png')
     end
   end
 end
