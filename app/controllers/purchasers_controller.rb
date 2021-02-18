@@ -1,7 +1,7 @@
 class PurchasersController < ApplicationController
   before_action :authenticate_user!, only: [:index,:create]
+  before_action :authenticate_user!, only: [:index,:create]
   def index
-      find_item
     if @item.purchaser !=  nil  || @item.user_id == current_user.id
       redirect_to root_path
     end
@@ -10,7 +10,6 @@ class PurchasersController < ApplicationController
 
   def create
       @purchaser_shipping = PurchaserShipping.new(purchaser_params)
-      find_item
     if @purchaser_shipping.valid?
       pay_item
       @purchaser_shipping.save
